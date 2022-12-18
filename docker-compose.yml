@@ -1,0 +1,23 @@
+services:
+  laravel:
+    container_name: laravel-docker
+    build: .
+    volumes:
+      - ./src:/var/www/html
+    ports:
+      - 9000:80
+
+  mysql_db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: nafsirudin14
+      MYSQL_DATABASE: laravel_docker
+    ports:
+      - 4037:3306
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    ports:
+      - 9001:80
+    environment:
+      - PMA_ARBITRARY=1
